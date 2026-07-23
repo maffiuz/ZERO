@@ -1,0 +1,75 @@
+[2026-07-23 14:00:11.419538]
+========================================================================
+--- RUN REPORT ---------------------------------------------------------
+========================================================================
+
+--- RUN NAME:
+        Test
+
+
+--- TOKAMAK CHAMBER
+
+        R = 6.20            [m]    major plasma radius
+        a = 2.00            [m]    minor plasma radius
+
+
+--- TIME FRAME
+
+        t_start = 0.00      [s]    simulation starting time (this is just for reference)
+        t_end = 300.00      [s]    simulation ending time
+        n_points = 1000     [-]    number of points on which the solver projects the solution
+
+
+--- OPERATIONAL PARAMETERS
+
+    ------- Auxiliary power:
+        W_ext = 1.00e+07    [W]    auxiliary heating
+
+    ------- Startup:
+        W_ext = 2.00e+08    [W]    auxiliary heating during startup
+        t_down = 60.00      [s]    startup time
+
+    ------- Confinment:
+        BT = 11.80          [T]    toroidal magnetic field component
+        IP = 1.25e+07       [A]    induced current in the plasma
+
+    ------- Refueling:
+        t_ref = 60.00       [s]    refueling starting time
+        D0_in = 5.00e+20    [s-1]  deuterium refueling rate
+        T0_in = 5.00e+20    [s-1]  tritium refueling rate
+
+
+--- STARTING CONDITIONS
+
+        E = 1.60e-01        [J]    total initial energy content
+        nD0 = 1.00e+20      [m-3]  initial neutral deuterium particle density
+        nD1 = 1.00e+00      [m-3]  initial ionized deuterium particle density
+        nT0 = 1.00e+20      [m-3]  initial neutral tritium particle density
+        nT1 = 1.00e+00      [m-3]  initial ionized tritium particle density
+        nHe4_0 = 0.00e+00   [m-3]  initial neutral He4 particle density
+        nHe4_0 = 0.00e+00   [m-3]  initial ionized He4 particle density
+        nHe4_0 = 0.00e+00   [m-3]  initial alpha particle density
+
+
+--- REACTIONS
+
+        H3(D,N)HE4 = True
+        H2(D,N)HE3 = True
+        H2(D,P)H3 = True
+        HE3(D,P)HE4 = True
+
+
+--- IMPURITIES
+
+    Impurity element: Ar
+        nAr = 0.00e+00      [m-3]  initial neutral Ar particle density
+        inj_rate = 4.70e+17 [s-1]  Ar injection rate
+        inj_start = 100.00  [s]    Ar injection starting time
+        inj_dur = 10.00     [s]    Ar injection duration
+
+
+========================================================================
+THIS LINE MARKS THE END OF THE REPORT. ANY COMMENTS CAN BE WRITTEN BELOW
+
+Note: don't change the format of the report file if you wish to use it as 
+input for future runs
