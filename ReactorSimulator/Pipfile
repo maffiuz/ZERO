@@ -6,12 +6,12 @@ name = "pypi"
 [packages]
 numpy = "*"
 matplotlib = "*"
-scipy = "*"
 ipykernel = "*"
 periodictable = "*"
 nbformat = "*"
 nbconvert = "*"
 jupyter = "*"
+scipy = "==1.17.1"
 
 [dev-packages]
 ipykernel = "*"
