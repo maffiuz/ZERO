@@ -8,7 +8,7 @@ version = "1.0.1"
 description = "Zero dimensional nuclear fusion reactor simulator"
 readme = "README.md"
 authors = [
-    {name = "Riccardo Vittorio Maffiodo", email = "maffiodor@gmail.com"}
+    {name = "Riccardo Vittorio Maffiodo", email = "-"}
 ]
 license = {text = "MIT"}
 classifiers = [
