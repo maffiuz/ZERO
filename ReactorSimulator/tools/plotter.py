@@ -4,7 +4,7 @@ import userDefined.user_inputs as inp
 import tools.utilities as ut
 from tokamak.vector import vector
 
-def plotter():    
+def plotter() -> list:    
     # Fetching the data
     base_data = np.loadtxt("out/simulator_data",skiprows=3)
 
@@ -147,7 +147,7 @@ def plotter():
         'Total energy content': [Time,Energy,'Plasma energy content (J)','',False],
         'Plasma composition': [Time,Plasma_Composition,'Particle density (m$^{-3}$)',Plasma_Composition_labels,True],
         'Energy balance details': [Time, [Power_Sink, Power_Source], 'Power (W)', ['Sinks','Sources'],False],
-        'Energy sources detais': [Time, [Power_Nuclear, Power_AuxiliaryHeating, Power_Joule], 'Power (W)', ['Alpha power','Auxiliary heating','Joule power'],True],
+        'Energy sources details': [Time, [Power_Nuclear, Power_AuxiliaryHeating, Power_Joule], 'Power (W)', ['Alpha power','Auxiliary heating','Joule power'],True],
         'Energy sinks details': [Time, [Power_Boundary, Power_Bremmstrahlung, Power_Radiation, Power_Ionization_Potential_Total], 'Power (W)', ['Boundary losses', 'Bremmstrahlung radiation', 'Line radiation', 'Ionization potential'],True],
         'Line radiation details': [Time, LRad+[LRad_Imp for LRad_Imp in LRad_Impurities], 'Power (W)', Plasma_Composition_labels,True],
         'Ionization potential losses': [Time, Ionization_Potential+[Ion_imp for Ion_imp in Ionzation_Potential_Impurities], 'Power (W)', Plasma_Composition_labels,True],
@@ -181,22 +181,34 @@ def plotter():
         plots['Nuclear reactions details'] = [Time, Power_Reactions, 'Power (W)', labels_react, True]
     
     # Plots
+    figs = []
     for i in range(len(plots.keys())):
         # Plotting every 10 plots to not overload the memory
-        if i % 10 == 0:
-            plt.plot()
+        # if i % 10 == 0:
+        #     plt.plot()
         
         title = list(plots.keys())[i]    
         x_value, y_values, y_legend, y_labels, y_log = list(plots.values())[i]
         
-        plt.figure(i)
-        plt.title(title)
-        plt.plot(x_value, np.transpose(y_values), label=y_labels)
-        plt.legend()
-        plt.xlabel('Time (s)')
-        plt.ylabel(y_legend)
-        plt.grid(True, 'both')
+        fig, ax = plt.subplots()
+        figs.append(fig)
+        # plt.title(title)
+        # plt.plot(x_value, np.transpose(y_values), label=y_labels)
+        # plt.legend()
+        # plt.xlabel('Time (s)')
+        # plt.ylabel(y_legend)
+        # plt.grid(True, 'both')
+        # if y_log:
+        #     plt.semilogy()
+        
+        ax.plot(x_value, np.transpose(y_values), label=y_labels)
+        ax.set(xlabel = 'Time (s)', ylabel = y_legend, title = title)
+        ax.legend()
+        ax.grid(True, 'both')
         if y_log:
-            plt.semilogy()
+            ax.set_yscale('log')
             
-    plt.plot()
+    plt.close('all')
+    # plt.show()
+    
+    return figs

@@ -1,5 +1,5 @@
 # %%
-def main():
+def main() -> list:
     import numpy as np
     from scipy.integrate import solve_ivp
     
@@ -29,7 +29,7 @@ def main():
     rm.writer(sol.t,sol.y)
     
     # Plot
-    plotter()
+    return plotter()
 
 if __name__ == "__main__":
     main()
