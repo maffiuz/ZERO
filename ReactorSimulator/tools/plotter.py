@@ -4,7 +4,7 @@ import userDefined.user_inputs as inp
 import tools.utilities as ut
 from tokamak.vector import vector
 
-def plotter() -> list:    
+def plotter() -> dict:    
     # Fetching the data
     base_data = np.loadtxt("out/simulator_data",skiprows=3)
 
@@ -181,7 +181,7 @@ def plotter() -> list:
         plots['Nuclear reactions details'] = [Time, Power_Reactions, 'Power (W)', labels_react, True]
     
     # Plots
-    figs = []
+    figs = {}
     for i in range(len(plots.keys())):
         # Plotting every 10 plots to not overload the memory
         # if i % 10 == 0:
@@ -191,7 +191,7 @@ def plotter() -> list:
         x_value, y_values, y_legend, y_labels, y_log = list(plots.values())[i]
         
         fig, ax = plt.subplots()
-        figs.append(fig)
+        figs[title] = fig
         # plt.title(title)
         # plt.plot(x_value, np.transpose(y_values), label=y_labels)
         # plt.legend()

@@ -1,5 +1,5 @@
 # %%
-def main() -> list:
+def main() -> dict:
     import numpy as np
     from scipy.integrate import solve_ivp
     
