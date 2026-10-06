@@ -19,16 +19,19 @@ def main() -> list:
     t_eval = np.linspace(inp.t_start, inp.t_end, inp.n_points)
         
     # Computing time evolution with Implicit Runge-Kutta method of the Radau IIA family of order 5
+    print('Computing the solution...')
     sol = solve_ivp(F, [inp.t_start, inp.t_end], s0, method = 'Radau', t_eval=t_eval)
     
     if not sol.success:
         raise Exception(f'The solver did not reach convergence. Exception raised: {sol.message}')
     
     # Output
+    print('Writing the report...')
     rm.startupReport()
     rm.writer(sol.t,sol.y)
     
     # Plot
+    print('Creating the plots...')
     return plotter()
 
 if __name__ == "__main__":

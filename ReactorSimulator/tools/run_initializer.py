@@ -1,6 +1,7 @@
 # This file generates starting conditions for the problem and sets user data
 # either from user_inputs.py or from a previous run report
 import os
+import importlib
 from periodictable import elements
 import userDefined.user_inputs as inp
 import tools.utilities as ut
@@ -49,10 +50,13 @@ def run_initializer() -> list:
     s0 = []     
     
     if use_report:
-        print(f'{input_report} will be used as input file...') 
+        print(f'Using the input values contained in {input_report}...') 
         s0 = read_report(input_report)
     else:
-        print('Using the values contained in userDefined/user_inputs.py ...')
+        print('Using the input values contained in userDefined/user_inputs.py ...')
+        # Reloading the input file is necessary for execution in Jupyter
+        importlib.reload(inp)
+        
         # Starting conditions          
         s0.append(inp.E_START)          # Total energy content (J)
         s0.append(inp.ND0_START)        # Deuterium neutral density
@@ -107,7 +111,7 @@ def read_report(path: str) -> list:
                 if any(char in text[0] for char in skip_rows):
                     continue
                 
-                # Only the first line has to be entirely store (simultation run name)
+                # Only the first line has to be entirely stored (simultation run name)
                 if first_field:
                     fields.append(line.strip())
                     first_field = False
