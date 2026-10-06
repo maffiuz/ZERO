@@ -169,6 +169,7 @@ def read_report(path: str) -> list:
                 
     else:
         inp.IMPURITIES.clear()
+        ut.IMPURITIES_CHARGE_STATES.clear()
     
     return base_s0           
 

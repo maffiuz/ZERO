@@ -75,7 +75,7 @@ def startupReport():
         f.write(f'[{str(current_time)}]\n')
         f.write('='*72+'\n'+'--- RUN REPORT '+57*'-'+'\n'+'='*72+'\n')
         f.write(
-            f"\n--- RUN NAME:\n\
+            f"\n--- RUN NAME (Don't use \"[-=\" in the name):\n\
         {inp.RUN_NAME}\n\n\n\
 --- TOKAMAK CHAMBER\n\n\
         R = {inp.R:<16.2f}[m]    major plasma radius\n\
