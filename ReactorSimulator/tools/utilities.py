@@ -26,26 +26,26 @@ INTER_THRESH = 1.e-3    # -, relative error on the interpolating arctan function
 
 # Referencing databases
 # H
-recHfile = os.path.join('adas','H','acd96_h.dat')
-ionHfile = os.path.join('adas','H','scd96_h.dat')
+recHfile = os.path.join('data','adas','H','acd96_h.dat')
+ionHfile = os.path.join('data','adas','H','scd96_h.dat')
 # T
-recTfile = os.path.join('adas','H','acd96_t.dat')
-ionTfile = os.path.join('adas','H','scd96_t.dat')
+recTfile = os.path.join('data','adas','H','acd96_t.dat')
+ionTfile = os.path.join('data','adas','H','scd96_t.dat')
 # He
-recHefile = os.path.join('adas','He','acd74_he.dat')
-ionHefile = os.path.join('adas','He','scd74_he.dat')
+recHefile = os.path.join('data','adas','He','acd74_he.dat')
+ionHefile = os.path.join('data','adas','He','scd74_he.dat')
 # Ar
-recArfile = os.path.join('adas','Ar','acd89_ar.dat')
-ionArfile = os.path.join('adas','Ar','scd89_ar.dat')
+recArfile = os.path.join('data','adas','Ar','acd89_ar.dat')
+ionArfile = os.path.join('data','adas','Ar','scd89_ar.dat')
 
 # PEC
-pec12_H_pfufile = os.path.join('adas','H','pec12#h_pju#h0.dat')
-pec96_He_file = os.path.join('adas','He','pec96#he_pju#he0.dat')
-pec96_He1_file = os.path.join('adas','He','pec96#he_pju#he1.dat')
+pec12_H_pfufile = os.path.join('data','adas','H','pec12#h_pju#h0.dat')
+pec96_He_file = os.path.join('data','adas','He','pec96#he_pju#he0.dat')
+pec96_He1_file = os.path.join('data','adas','He','pec96#he_pju#he1.dat')
 
 def getPEC_data(element: str) -> list:
     # Setting appropriate path in the right folder (download has to be manual)
-    path = f'adas/{element}'
+    path = f'data/adas/{element}'
     
     # Fetching all 'pec... .dat'
     pec_data_files = [
