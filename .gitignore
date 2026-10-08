@@ -16,3 +16,6 @@
 
 # Lock file
 Pipfile.lock
+
+# ADAS data
+**/adas
