@@ -9,6 +9,9 @@ def plotter() -> dict:
     base_data = np.loadtxt("out/simulator_data",skiprows=3)
 
     for element in inp.IMPURITIES.keys():
+        if not ut.IMPURITIES_SOLUTION[element][1]:
+            continue
+        
         path = f'out/impurities_{element}_data'
         try:
             data = np.loadtxt(path,skiprows=5)
@@ -27,13 +30,13 @@ def plotter() -> dict:
     Ionzation_Potential_D = []
     Ionzation_Potential_He3 = []
     Ionzation_Potential_He4 = []
-    Ionzation_Potential_Impurities = [[] for _ in range(len(inp.IMPURITIES.keys()))]
+    Ionzation_Potential_Impurities = [[] for element in inp.IMPURITIES.keys() if ut.IMPURITIES_SOLUTION[element][1]]
     Ionzation_Potential_T = []
     Istopic_Mass_Number = []
     LRad_D = []
     LRad_He3 = []
     LRad_He4 = []
-    LRad_Impurities = [[] for _ in range(len(inp.IMPURITIES.keys()))]
+    LRad_Impurities = [[] for element in inp.IMPURITIES.keys() if ut.IMPURITIES_SOLUTION[element][1]]
     LRad_T = []
     Power_Ionization_Potential_Total = []
     Power_Nuclear = []
@@ -105,6 +108,9 @@ def plotter() -> dict:
         # Impurities
         for i in range(len(inp.IMPURITIES.keys())):
             element = list(inp.IMPURITIES.keys())[i]
+            if not ut.IMPURITIES_SOLUTION[element][1]:
+                continue
+            
             Ionzation_Potential_Impurities[i].append(s.ElementIonizationLosses(element))
             LRad_Impurities[i].append(s.LineRadiationPEC(ut.PEC[element]))
             
@@ -138,6 +144,9 @@ def plotter() -> dict:
     # Impurities
     for i in range(len(inp.IMPURITIES.keys())):
         element = list(inp.IMPURITIES.keys())[i]
+        if not ut.IMPURITIES_SOLUTION[element][1]:
+            continue
+        
         Plasma_Composition.append(np.transpose(Density_Impurities[i])[-1])
         Plasma_Composition_labels.append(element)
     
@@ -166,6 +175,9 @@ def plotter() -> dict:
     # Impurity details
     for i in range(len(inp.IMPURITIES.keys())):
         element = list(inp.IMPURITIES.keys())[i]
+        if not ut.IMPURITIES_SOLUTION[element][1]:
+            continue
+        
         labels = []
         for charge in range(ut.IMPURITIES_CHARGE_STATES[element]):
             labels.append(f'{element} {charge}' if charge > ut.IMPURITIES_CHARGE_STATES[element] - 7 else None)

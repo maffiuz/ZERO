@@ -6,7 +6,7 @@ RUN_NAME = 'Test'
 
 # Time frame
 t_start = 0. 
-t_end = 300
+t_end = 1000
 n_points = 1000
 
 # Reactor chamber dimentions

@@ -1,4 +1,4 @@
-[2026-10-10 14:47:02.768566]
+[2026-10-13 12:31:02.098449]
 ========================================================================
 --- RUN REPORT ---------------------------------------------------------
 ========================================================================
@@ -16,7 +16,7 @@
 --- TIME FRAME
 
         t_start = 0.00      [s]    simulation starting time (this is just for reference)
-        t_end = 300.00      [s]    simulation ending time
+        t_end = 1000.00     [s]    simulation ending time
         n_points = 1000     [-]    number of points on which the solver projects the solution
 
 

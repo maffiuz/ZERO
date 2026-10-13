@@ -44,7 +44,8 @@ def writer(t,y):
                 f.write('\n')
     
     for element in inp.IMPURITIES.keys():
-        index = impuritiesWriter(t,y,element,index)
+        if ut.IMPURITIES_SOLUTION[element][1]:
+            index = impuritiesWriter(t,y,element,index)
             
 # Specific function to output impurities data
 def impuritiesWriter(t,y, element: str, index: int) -> int:
@@ -121,7 +122,8 @@ def startupReport():
             f.write('\n--- IMPURITIES\n\n')
         
         for el in inp.IMPURITIES.keys():
-            f.write(f"\
+            if ut.IMPURITIES_SOLUTION[el][1]:
+                f.write(f"\
     Impurity element: {el}\n\
         n{el} = {inp.IMPURITIES[el][0]:<14.2e}[m-3]  initial neutral {el} particle density\n\
         inj_rate = {inp.IMPURITIES[el][1]:<9.2e}[s-1]  {el} injection rate\n\

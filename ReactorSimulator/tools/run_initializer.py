@@ -78,15 +78,20 @@ def run_initializer() -> list:
         # Adding impurities data
         impurity_data(element)      
 
-        # Impurity starting condition
-        if inp.IMPURITIES[element][0] == 0:
-            for _ in range(ut.IMPURITIES_CHARGE_STATES[element]):
-                s0.append(0.0e0)
+        # Impurity starting condition and solver properties
+        if inp.IMPURITIES[element][0] == 0:                     
+            # Impurity activation time set only if inj rate is greater than 0
+            if inp.IMPURITIES[element][1] > 0:
+                ut.IMPURITIES_SOLUTION[element] = [inp.IMPURITIES[element][2], False]   # State set to False, impurity yet not active
+            
         else:
             s0.append(inp.IMPURITIES[element][0])
             s0.append(1.0)          # Necessary for numerical stability
             for _ in range(ut.IMPURITIES_CHARGE_STATES[element]-2):
                 s0.append(0.0e0)
+            
+            # If impurities are present from the start
+            ut.IMPURITIES_SOLUTION[element] = [0, True]     # State set to True, impurity active
                                
     return s0
             

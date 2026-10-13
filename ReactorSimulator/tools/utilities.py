@@ -16,6 +16,7 @@ TAU_SMOOTHING = 0.0001  # Time constant for smoothing constant injection rates o
 # Elements parameters, filled in run_initializer.py
 IMPURITIES_CHARGE_STATES = {}
 IMPURITIES_MASS_NUMBER = {}
+IMPURITIES_SOLUTION = {}    # Impurity solver activation time, active state (bool)
 
 # Parameter for forcing confinment time
 TAU_FIXED = .2
@@ -130,7 +131,7 @@ BOUNCE = {
     'T':0.99,
     'He4':0.15,
     'He3':0.15,
-    'Imp':0.99
+    'Imp':0.995
 }
 
 # Dictionary constructed to properly access the line radiation (PEC) function

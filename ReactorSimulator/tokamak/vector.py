@@ -189,7 +189,8 @@ class vector:
         
         impuritiesPEC = 0
         for element in inp.IMPURITIES.keys():
-            impuritiesPEC += self.LineRadiationPEC(ut.PEC[element])
+            if ut.IMPURITIES_SOLUTION[element][1]:
+                impuritiesPEC += self.LineRadiationPEC(ut.PEC[element])
                 
         return basePEC + impuritiesPEC
     
@@ -219,7 +220,8 @@ class vector:
             loss += self.ElementIonizationLosses('He3')
             
         for element in inp.IMPURITIES.keys():
-            loss += self.ElementIonizationLosses(element)
+            if ut.IMPURITIES_SOLUTION[element][1]:
+                loss += self.ElementIonizationLosses(element)
             
         return loss
         

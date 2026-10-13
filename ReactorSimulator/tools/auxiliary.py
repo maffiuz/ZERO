@@ -83,7 +83,11 @@ def Evolution(t: float,values: list) -> list:
         change_rate.append(reactions_second_DD_HE3-reactions_second_DHE3-lossHe3_2-rHe3_2+iHe3_1)       # He3 2+
     
     # Impurities change rate
-    for element in ut.IMPURITIES_CHARGE_STATES.keys():
+    for element in ut.IMPURITIES_CHARGE_STATES.keys():     
+        # Checking if impurity is active
+        if not ut.IMPURITIES_SOLUTION[element][1]:
+            continue
+           
         for z in range(ut.IMPURITIES_CHARGE_STATES[element]):
             balance = 0
             # Interaction with lower ionization state
