@@ -89,7 +89,7 @@ def solver(F: function, t_start: float, t_end: float, s0: list) -> tuple[list, l
     sol = solve_ivp(F, t_span, s0, method = 'Radau', t_eval=t_eval, dense_output=True)
     if not sol.success:
         raise Exception(f'The solver did not reach convergence. Exception raised: {sol.message}')
-    print('--- Solved timespan')
+    print(f'--- Solved timespan: {t_start} s to {t_end} s')
     t = sol.t
     y = sol.y
     s0_next = sol.sol(t_end)    
