@@ -95,7 +95,9 @@ Here is a list of the main input parameters:
 ## Roadmap
 
 - [ ] Interface to download ADAS data
-
+- [ ] Implementing more impurities
+- [ ] Improving the code structure and streamlining the download and setup process
+- [ ] Improving the underlying physical modelling
 
 ## Development
 
