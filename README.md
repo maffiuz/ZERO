@@ -80,6 +80,7 @@ Here is a list of the main input parameters:
 | `Aux_heat_operat` | *W_ext* | auxiliary heating | [W] |
 | `IP` | *IP* | plasma current | [A] |
 | `BT` | *BT* | toroidal magnetic field component | [T] |
+| `ashes_removed` | *ashes_rem* | percentage of He ashes removed from the plasma | [-] |
 | `E_START` | *E* | total initial energy content | [J] |
 | `ND0_START` | *nD0* |  initial neutral deuterium particle density | [m-3] |
 | `ND1_START` | *nD1* | initial ionized deuterium particle density | [m-3] |

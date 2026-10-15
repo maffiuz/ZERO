@@ -133,6 +133,8 @@ class vector:
     def ParticleRecycling(self,el: str, Z: int, specie = None) -> float:
         if el == 'Imp':
             return ut.BOUNCE[el]*self.MassLoss(el,Z,specie)
+        elif el == 'He4' or el == 'He3':    # Helium ashes explicit removal
+            return (ut.BOUNCE[el]-inp.ashes_removed)*self.MassLoss(el,Z)
         else:
             return ut.BOUNCE[el]*self.MassLoss(el,Z)
        

@@ -56,7 +56,7 @@ def run_initializer() -> list:
         print('Using the input values contained in userDefined/user_inputs.py ...')
         # Reloading the input file is necessary for execution in Jupyter
         importlib.reload(inp)
-        
+                
         # Starting conditions          
         s0.append(inp.E_START)          # Total energy content (J)
         s0.append(inp.ND0_START)        # Deuterium neutral density
@@ -92,7 +92,14 @@ def run_initializer() -> list:
             
             # If impurities are present from the start
             ut.IMPURITIES_SOLUTION[element] = [0, True]     # State set to True, impurity active
-                               
+               
+    # Checking wrong inputs
+    # ashes removal
+    if inp.ashes_removed < 0:
+        inp.ashes_removed = 0
+    elif inp.ashes_removed > 0.99:
+        inp.ashes_removed = 0.99
+                    
     return s0
             
 # Reads fields from input report and overwrites input data          
@@ -148,11 +155,12 @@ def read_report(path: str) -> list:
         # Operational variables
         inp.Aux_heat_operat, inp.Aux_heat_start, inp.TimeDown = fields[6:9] # Auxiliary heating
         inp.BT, inp.IP = fields[9:11]                       # Confinement
-        inp.t_ref, inp.D0_in, inp.T0_in = fields[11:14]     # Refueling   
+        inp.t_ref, inp.D0_in, inp.T0_in = fields[11:14]     # Refueling  
+        inp.ashes_removed = fields[14]                      # Removal fraction of He ashes
         # Starting conditions
-        base_s0 = fields[14:22]                             # Starting conditions
+        base_s0 = fields[15:23]                             # Starting conditions
         # Reactions modelled
-        inp.REACTIONS = {k: v for k,v in zip(inp.REACTIONS.keys(), fields[22:26])}
+        inp.REACTIONS = {k: v for k,v in zip(inp.REACTIONS.keys(), fields[23:27])}
         
     except Exception as e:
         if e == IndexError:
@@ -161,7 +169,7 @@ def read_report(path: str) -> list:
             print(f'Exception occurred: {e}')  
     
     # Extra parameters (other than base run parameters)
-    index = 26
+    index = 27
     if len(fields) > index:
         # Impurities
         if impurities:

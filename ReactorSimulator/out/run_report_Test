@@ -1,4 +1,4 @@
-[2026-10-13 14:58:01.636957]
+[2026-10-15 16:18:46.322981]
 ========================================================================
 --- RUN REPORT ---------------------------------------------------------
 ========================================================================
@@ -37,6 +37,9 @@
         t_ref = 60.00       [s]    refueling starting time
         D0_in = 5.00e+20    [s-1]  deuterium refueling rate
         T0_in = 5.00e+20    [s-1]  tritium refueling rate
+
+    ------- Ashes removal:
+        ashes_rem = 0.84    [-]    percentage of He ashes removed from the plasma (min 0 max 0.99)
 
 
 --- STARTING CONDITIONS

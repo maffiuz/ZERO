@@ -17,11 +17,12 @@ R = 6.2                # m, tokamak major radius
 t_ref = 60              # s, refueling starting time
 D0_in = 5.e20           # s-1, deuterium particle refueling rate 
 T0_in = 5.e20           # s-1, tritium particle refueling rate
-TimeDown = 60          # s, time of startup auxiliary heating shut down
+TimeDown = 60           # s, time of startup auxiliary heating shut down
 Aux_heat_start = 200.e6   # W, auxiliary heating during startup
 Aux_heat_operat = 10.e6   # W, auxiliary heating during operation
-IP = 12.5e6              # A, induced current in the plasma
+IP = 12.5e6             # A, induced current in the plasma
 BT = 11.8               # T, toroidal field component
+ashes_removed = 0.84    # -, percentage of He ashes removed from the plasma (min 0 max 0.99)
 
 # Starting conditions
 E_START = 1.e-2*cs.eV*1.e20 # J, total initial energy content

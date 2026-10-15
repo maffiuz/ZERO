@@ -97,7 +97,9 @@ def startupReport():
     ------- Refueling:\n\
         t_ref = {inp.t_ref:<12.2f}[s]    refueling starting time\n\
         D0_in = {inp.D0_in:<12.2e}[s-1]  deuterium refueling rate\n\
-        T0_in = {inp.T0_in:<12.2e}[s-1]  tritium refueling rate\n\n\n\
+        T0_in = {inp.T0_in:<12.2e}[s-1]  tritium refueling rate\n\n\
+    ------- Ashes removal:\n\
+        ashes_rem = {inp.ashes_removed:<8.2f}[-]    percentage of He ashes removed from the plasma (min 0 max 0.99)\n\n\n\
 --- STARTING CONDITIONS\n\n\
         E = {inp.E_START:<16.2e}[J]    total initial energy content\n\
         nD0 = {inp.ND0_START:<14.2e}[m-3]  initial neutral deuterium particle density\n\
