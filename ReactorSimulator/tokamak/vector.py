@@ -75,11 +75,11 @@ class vector:
     def getReactionRate(self, reaction: str) -> float:
         return ut.REACTION_RATES[reaction](self.TeV) if inp.REACTIONS[reaction] else 0.
     
-    # Functions to get the reactions per second, given the rate parameter [m-3 s-1]   
+    # Functions to get the reactions per second, given the rate parameter [s-1]   
     def getReactionsSecond(self, reaction: str) -> float:
         element1, element2 = ut.REACTION_IONS[reaction](self)
         rate = self.getReactionRate(reaction)
-        return element1 * element2 * rate 
+        return element1 * element2 * rate * self.V
     
     # Generic recombination/ionization function [m-3 s-1]
     def RecIonHandler(self,x: list, Z: int) -> float:
@@ -141,7 +141,7 @@ class vector:
     # Heating power in the plasma produced by nuclear fusion reactions [W]
     def NuclearPower(self, reaction: str) -> float:
         reactions_second = self.getReactionsSecond(reaction)
-        QJ_reaction = ut.REACTION_POWER[reaction] * (1.e6*cs.eV) * reactions_second * self.V
+        QJ_reaction = ut.REACTION_POWER[reaction] * (1.e6*cs.eV) * reactions_second
         return QJ_reaction
     
     # A completely fake value, to mimic external heating for a well defined time period [W]

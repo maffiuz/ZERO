@@ -41,12 +41,12 @@ def Evolution(t: float,values: list) -> list:
     refuel_D0 = x.Refueling(t,'D')
     refuel_T0 = x.Refueling(t,'T')
 
-    # Reactions per second
-    reactions_second_DT = x.getReactionsSecond('H3(D,N)HE4')
-    reactions_second_DD_T = x.getReactionsSecond('H2(D,P)H3')
+    # Reaction density per second
+    reactions_second_DT = x.getReactionsSecond('H3(D,N)HE4')/x.V
+    reactions_second_DD_T = x.getReactionsSecond('H2(D,P)H3')/x.V
     if x.nHe3:
-        reactions_second_DHE3 = x.getReactionsSecond('HE3(D,P)HE4')
-        reactions_second_DD_HE3 = x.getReactionsSecond('H2(D,N)HE3')
+        reactions_second_DHE3 = x.getReactionsSecond('HE3(D,P)HE4')/x.V
+        reactions_second_DD_HE3 = x.getReactionsSecond('H2(D,N)HE3')/x.V
     else:
         reactions_second_DHE3 = 0.
         reactions_second_DD_HE3 = 0.
